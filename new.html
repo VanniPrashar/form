@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <style>
+    .error-message {
+    color: red;
+    font-weight: bold;
+  }
+
+  .button1{
+    width: 100px;
+    height: 100px;
+    font-size: xx-large;
+    font-weight: 1000;
+    color: green;
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .f{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 2rem;
+    font-size: x-large;
+  }
+
+  .t{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  </style>
+ 
+</head>
+<body>
+  <form id="form">
+    <div class="f">
+
+    <h1>MY FORM</h1>
+
+    <p><label>Name:</label>
+    <input type="text" id="name" required><br>
+
+    <p><label>Age:</label>
+    <input type="number" id="age" min="18" max="100" required><br></p>
+
+    <label>Gender:</label>
+    <div class="t">
+    <input type="radio" name="gender" value="male" required>Male
+    <input type="radio" name="gender" value="female">Female
+    <input type="radio" name="gender" value="no">Rather not specify
+</div><br>
+
+
+    <p><label>Educational Qualification:</label>
+    <select id="qualification" required>
+      <option value="">Select</option>
+      <option value="bachelor">UG</option>
+      <option value="master">PG</option>
+      <option value="doctorate">PHD</option>
+    </select><br></p>
+
+    <p><label>Phone Number:</label>
+    <input type="text" id="phoneNumber" pattern="[1-9][0-9]{9}" required><br></p>
+    
+
+    <p><label>Email:</label>
+    <input type="email" id="email" required><br></p>
+   
+
+    <p><label>City:</label>
+    <input type="text" id="city" required><br></p>
+
+    <p><label>Password:</label>
+    <input type="password" id="password" required><br></p>
+
+    <p><label>Confirm Password:</label>
+    <input type="password" id="confirmPassword" required><br></p>
+    
+
+     <input class="button1" type="submit" value="Sign Up">
+    </div>
+  </form>
+
+
+  <script>
+    signUpForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      
+      const name = document.getElementById('name');
+      const city = document.getElementById('city');
+      const phoneNumber = document.getElementById('phoneNumber');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirmPassword');
+
+
+      if (!isValidName(name.value)) {
+        name.classList.add('error');
+        return;
+      }
+
+      if (!isValidCity(city.value)) {
+        city.classList.add('error');
+        return;
+      }
+
+
+      if (!isValidPhoneNumber(phoneNumber.value)) {
+        phoneNumber.classList.add('error');
+        <span class="error-message">Invalid phone number</span>
+        return;
+      }
+
+      if (!isValidEmail(email.value)) {
+        email.classList.add('error');
+        return;
+      }
+
+      if (password.value !== confirmPassword.value) {
+        confirmPassword.classList.add('error');
+        <span class="error-message">Passwords do not match</span>
+        return;
+      }
+
+    });
+
+    function isValidName(name) {
+      const nameRegex = /^[A-Za-z]{2, }+$/;
+      return nameRegex.test(name);
+      <span class="error-message">Invalid name</span>
+    }
+
+    function isValidCity(city) {
+      const cityRegex = /^[A-Za-z]{2, }+$/;
+      return cityRegex.test(city);
+      <span class="error-message">Invalid entry</span>
+    }
+
+    function isValidPhoneNumber(phoneNumber) {
+      const phoneNumberRegex = /^[1-9][0-9]{9}$/;
+      return phoneNumberRegex.test(phoneNumber);
+      
+    }
+
+    function matchpassword(){
+    var pw1 = document.getElementById("password");  
+  var pw2 = document.getElementById("confirmPassword");  
+  if(pw1 != pw2)  
+  {   
+    <span>
+    "Passwords did not match" </span>;  
+  } else {  
+   <span>
+    "Password created successfully" </span>;  
+  }  }
+
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+      <span class="error-message">Invalid email address</span>
+    }
+  </script>
+</body>
+</html>
